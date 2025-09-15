@@ -1,9 +1,9 @@
 import { Sequelize, DataTypes } from "sequelize";
-import { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_DIALECT } from '../config/env.js';
+import { DatabaseName, DatabaseUsername, DatabasePassword,  DatabaseHost, DB_DIALECT, } from '../config/env.js';
 
-const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+const sequelize = new Sequelize(DatabaseName, DatabaseUsername, DatabasePassword, {
     dialect: DB_DIALECT,
-    host: DB_HOST,
+    host: DatabaseHost,
     logging: false
 });
 
