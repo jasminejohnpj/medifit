@@ -6,19 +6,16 @@ export const errorHandler = (err, req, res, next) => {
   let statusCode = err.statusCode || 500;
   let message = err.message || "Internal Server Error";
 
-  // Sequelize validation errors
   if (err.name === "SequelizeValidationError" || err.name === "SequelizeUniqueConstraintError") {
     statusCode = 400;
     message = err.errors.map((e) => e.message).join(", ");
   }
 
-  // Sequelize DB errors
   if (err.name === "SequelizeDatabaseError") {
     statusCode = 500;
     message = "Database error occurred";
   }
 
-  // JWT / Authentication errors
   if (err.name === "JsonWebTokenError") {
     statusCode = 401;
     message = "Invalid token";
